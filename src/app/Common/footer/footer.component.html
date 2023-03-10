@@ -1,0 +1,207 @@
+<footer class="aceFooter">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-12 pt-3 pb-2">
+        <div>
+          <img class="acefooterLogo" src="./assets/img/logo.png" />
+        </div>
+        <div>
+          <p class="footerTextP">
+            {{ homeData.footer_desc }}
+          </p>
+        </div>
+        <div class="row mb-2">
+          <div class="col-12 col-lg-6 col-md-12 d-grid gap-2 mb-2">
+            <a
+              class="btn aceBtnBgdarkblack"
+              [href]="'tel:' + homeData.c_number"
+            >
+              <i class="fa-solid fa-phone"></i>
+              CLICK TO CALL OUR AGENT
+            </a>
+          </div>
+          <div class="col-12 col-lg-6 col-md-12 d-grid gap-2 mb-2">
+            <a
+              class="btn aceBtnBgdarkblack"
+              [href]="'https://wa.me/' + homeData.w_number"
+              target="_blank"
+            >
+              <i class="fa-brands fa-whatsapp"></i> WHATSAPP OUR AGENT
+            </a>
+          </div>
+        </div>
+        <div class="border-single mt-3 mb-3 ms-1"></div>
+        <div class="d-flex align-items-center">
+          <div class="f-social-links">
+            <ul>
+              <li *ngFor="let i of homeData.ameneties">
+                <a [href]="i.text" target="_blank"
+                  ><i [class]="i.icon + ' fa-fw fa-solid'"></i
+                ></a>
+              </li>
+              <!-- <li>
+                <a [href]="homeData.Twitter" target="_blank"
+                  ><i class="fa-brands fa-twitter"></i
+                ></a>
+              </li>
+              <li>
+                <a [href]="homeData.YouTube" target="_blank"
+                  ><i class="fa-brands fa-youtube"></i
+                ></a>
+              </li>
+              <li>
+                <a [href]="homeData.Instagram" target="_blank"
+                  ><i class="fa-brands fa-instagram"></i
+                ></a>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-12 pt-3 pb-1">
+        <div class="row">
+          <!-- Accordion start -->
+          <div class="accordion d-block d-md-none mt-5" id="accordionfooter">
+            <div class="accordion-item">
+              <h2 class="accordion-header accord-header" id="headingOne">
+                <button
+                  class="accordion-button collapsed accord-btn"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  <span class="footerLinkHeading">USEFUL LINKS</span>
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <ul class="footerLinks">
+                    <li><a (click)="openUrl2('buy')">Buy</a></li>
+                    <li>
+                      <a (click)="openUrl2('rent')">Rent</a>
+                    </li>
+
+                    <li><a routerLink="/careers">Careers</a></li>
+                    <li>
+                      <a routerLink="/off-plan">Off-Plan</a>
+                    </li>
+                    <li>
+                      <a routerLink="/blog">Global</a>
+                    </li>
+                    <li>
+                      <a routerLink="/who-we-are">Who We Are?</a>
+                    </li>
+                    <li>
+                      <a routerLink="/contact-us">Contact Us</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header accord-header" id="headingTwo">
+                <button
+                  class="accordion-button accord-btn"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  <span class="footerLinkHeading">USEFUL LINKS</span>
+                </button>
+              </h2>
+              <div
+                id="collapseTwo"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <ul class="footerLinks">
+                    <li
+                      *ngFor="let i of allPropertyTypes"
+                      (click)="openUrl(i.id)"
+                    >
+                      <a> {{ i.name }}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Accordion end -->
+        </div>
+        <div class="row px-2">
+          <div class="col-12 col-lg-6 col-md-6 mt-2 d-none d-md-block">
+            <div>
+              <span class="footerLinkHeading">USEFUL LINKS</span>
+            </div>
+            <ul class="footerLinks">
+              <li *ngFor="let i of allPropertyTypes">
+                <a class="nav-link p-0" (click)="openUrl(i.id)">
+                  {{ i.name }}</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-12 col-lg-6 col-md-6 mt-2 d-none d-md-block">
+            <div>
+              <span class="footerLinkHeading">USEFUL LINKS</span>
+            </div>
+            <ul class="footerLinks">
+              <li><a class="nav-link p-0" (click)="openUrl2('buy')">Buy</a></li>
+              <li>
+                <a class="nav-link p-0" (click)="openUrl2('rent')">Rent</a>
+              </li>
+
+              <li><a class="nav-link p-0" routerLink="/careers">Careers</a></li>
+              <li>
+                <a routerLink="/off-plan">Off-Plan</a>
+              </li>
+              <li>
+                <a routerLink="/blog">Global</a>
+              </li>
+              <li>
+                <a class="nav-link p-0" routerLink="/who-we-are">Who We Are?</a>
+              </li>
+              <li>
+                <a routerLink="/contact-us">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="row gx-0">
+            <div class="border-single mt-4 ms-2"></div>
+            <div
+              class="col-12 col-lg-6 col-md-12 mt-4 AcecopyrightText text-center text-lg-start"
+            >
+              Ace Capital Realty ©{{ fullyear }} All Rights Reserved
+            </div>
+            <div
+              class="col-12 col-lg-6 col-md-12 mt-4 AceTermsText text-center text-lg-end"
+            >
+              <ul>
+                <li><a routerLink="/terms-of-use">Terms of Use</a></li>
+                <li><a routerLink="/privacy-policy">Privacy Policy</a></li>
+                <li>
+                  <a [href]="ds.frontendurl + '/sitemap.xml'" target="_blank"
+                    >Sitemap</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

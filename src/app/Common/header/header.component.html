@@ -1,0 +1,52 @@
+<section>
+  <div class="subHeaderBar"></div>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" (click)="openHome()" style="cursor: pointer">
+        <img class="logo mx-5" src="./assets/img/logo.png" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse justify-content-center"
+        id="navbarSupportedContent"
+      >
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li
+            [class]="
+              i.active == true
+                ? 'nav-item mx-xl-1 current-active'
+                : 'nav-item mx-xl-1'
+            "
+            *ngFor="let i of MenuArr"
+          >
+            <a
+              class="nav-link active optima"
+              aria-current="page"
+              (click)="openUrl(i)"
+              >{{ i.name }}</a
+            >
+          </li>
+          <li class="nav-item mx-1">
+            <button
+              class="btn btn-outline-success ace-btn-primary acebookBtn"
+              type="button"
+              (click)="openBookModel()"
+            >
+              BOOK PROPERTY VISIT
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</section>

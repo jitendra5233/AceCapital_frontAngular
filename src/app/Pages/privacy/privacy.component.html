@@ -1,0 +1,38 @@
+<!-- Breadcrumb start -->
+<section id="acebreadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <nav
+          style="
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+            );
+          "
+          aria-label="breadcrumb"
+        >
+          <ol class="breadcrumb mb-0 d-flex align-items-center">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Privacy Policy
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Breadcrumb end -->
+
+<section id="privacy-policy">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12 pp-head">
+        <h1 class="text-center">Privacy Policy</h1>
+      </div>
+    </div>
+    <div [innerHTML]="otherData"></div>
+  </div>
+</section>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

@@ -1,0 +1,122 @@
+<section class="ace-bg pb-5">
+  <div class="container py-3">
+    <div class="row my-3">
+      <div class="col-12">
+        <h2 class="text-center aceTitle">ACE CAPITAL</h2>
+      </div>
+      <div class="col-12 mb-5" style="text-align: center">
+        <h1 class="text-center aceTitle2">
+          Innovative Real Estate Agency in Dubai
+        </h1>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-4 col-6 mb-3 text-center text-lg-end">
+        <button
+          type="button"
+          [class]="'btn btn-dark ace-searchBtn ace-btn-primary-y ' + activeBtn1"
+          (click)="cahngeTab(1)"
+        >
+          Residential
+        </button>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6 text-center">
+        <button
+          type="button"
+          [class]="'btn btn-dark ace-searchBtn ace-btn-primary-y ' + activeBtn2"
+          (click)="cahngeTab(2)"
+        >
+          Commercial
+        </button>
+      </div>
+      <div
+        class="col-lg-5 col-md-4 col-6 text-center ps-lg-5 ps-xl-3 text-lg-start"
+      >
+        <button
+          type="button"
+          [class]="'btn btn-dark ace-searchBtn ace-btn-primary-y ' + activeBtn3"
+          (click)="cahngeTab(3)"
+        >
+          Off-Plan
+        </button>
+      </div>
+      <div class="col-12 mt-3 form-padding">
+        <div class="ace-searchbox">
+          <div class="row p-3" style="align-items: flex-end">
+            <div class="col-lg-2 col-md-2 col-12 mb-3">
+              <div>
+                <label for="exampleFormControlInput1" class="form-label m-0"
+                  >Purpose</label
+                >
+                <select
+                  class="form-select form-field"
+                  aria-label="Default select example"
+                  [(ngModel)]="purpose"
+                >
+                  <option value="1">Buy</option>
+                  <option value="2">Rent</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-12 mb-3">
+              <div>
+                <label for="exampleFormControlInput1" class="form-label m-0"
+                  >Property Type</label
+                >
+                <select
+                  class="form-select form-field"
+                  aria-label="Default select example"
+                  [(ngModel)]="propertyType"
+                >
+                  <option value="0">Select Type</option>
+                  <option
+                    value="1"
+                    [value]="i.id"
+                    *ngFor="let i of allPropertyTypes"
+                  >
+                    {{ i.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-5 col-12 mb-3">
+              <div>
+                <label for="exampleFormControlInput1" class="form-label m-0"
+                  >Location</label
+                >
+                <input
+                  type="text"
+                  class="form-control form-field"
+                  placeholder="Community or Building"
+                  id="locationTextField"
+                  ngx-google-places-autocomplete
+                  (onAddressChange)="AddressChange($event)"
+                />
+              </div>
+            </div>
+            <div class="col-lg-1 col-md-2 col-12 mb-3">
+              <div class="d-grid gap-2 d-md-none d-lg-none">
+                <button
+                  (click)="handleSearch()"
+                  type="button"
+                  class="btn btn-dark ace-btn-primary-n"
+                >
+                  Search Now
+                </button>
+              </div>
+              <div class="text-center" class="d-none d-md-block d-lg-block">
+                <button
+                  type="button"
+                  class="form-search-btn"
+                  (click)="handleSearch()"
+                >
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

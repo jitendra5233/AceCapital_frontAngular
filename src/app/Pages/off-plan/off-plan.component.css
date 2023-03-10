@@ -1,0 +1,32 @@
+.offplan-mian-hero-place {
+  height: 250px !important;
+  padding: 70px 0px 0px 0px;
+}
+.main-breadcrumx-placx {
+  text-align: center;
+}
+.main-breadcrumx-placx h2 {
+  color: white;
+  font-weight: 500;
+  font-size: 50px;
+}
+.offplan-mian-hero-place p {
+  color: white;
+  font-size: 20px;
+}
+.drop-off-plan-prop .dropdown {
+  display: inline;
+}
+.drop-off-plan-prop {
+  margin: auto;
+  text-align: center;
+}
+
+@media only screen and (max-width: 490px) {
+  .main-breadcrumx-placx h2 {
+    font-size: 24px;
+  }
+  .offplan-mian-hero-place p {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,75 @@
+<!-- Breadcrumb start -->
+<section id="acebreadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <nav
+          style="
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+            );
+          "
+          aria-label="breadcrumb"
+        >
+          <ol class="breadcrumb mb-0 d-flex align-items-center">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              All Types
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Breadcrumb end -->
+
+<section id="off-plan-hero" class="offplan-mian-hero-place">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="main-breadcrumx-placx">
+          <h2>Property Types</h2>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="off-plan-projects">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="off-plan-title text-center">Types</h1>
+        <h6 class="off-plan-subtitle text-center mb-0 lh-1">
+          Tips for Dubai property market
+        </h6>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div
+        class="col-sm-6 col-md-6 col-xl-3 my-4"
+        *ngFor="let i of allPropertyTypes"
+      >
+        <div
+          class="project-card1"
+          [style]="
+            'background:url(' + ds.baseurl + '/media/images/' + i.url + ')'
+          "
+        >
+          <div class="project-container">
+            <div class="project-content">
+              <h4>{{ i.name }}</h4>
+              <p></p>
+              <button class="btn btn-details" (click)="openUrl(i)">
+                More Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

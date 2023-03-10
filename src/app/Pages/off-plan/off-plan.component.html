@@ -1,0 +1,196 @@
+<!-- Breadcrumb start -->
+<section id="acebreadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <nav
+          style="
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+            );
+          "
+          aria-label="breadcrumb"
+        >
+          <ol class="breadcrumb mb-0 d-flex align-items-center">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item">
+              <a routerLink="/off-plan">Off-Plan</a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Breadcrumb end -->
+
+<section id="off-plan-hero" class="offplan-mian-hero-place">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="main-breadcrumx-placx">
+          <h2>OFF PLAN PROJECTS IN DUBAI</h2>
+          <p>
+            Invest in the best off-plan real estate by leading developers that
+            will surely make your future plans a success.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="off-plan-projects">
+  <div class="container">
+    <div class="row">
+      <div class="col-12" style="text-align: center">
+        <h1 class="off-plan-title text-center">PROJECTS</h1>
+        <h6 class="off-plan-subtitle text-center mb-0 lh-1">
+          Tips for Dubai property market
+        </h6>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <owl-carousel-o [options]="customOptions">
+        <ng-template *ngFor="let i of allPropertyTypes" carouselSlide>
+          <div class="col-sm-6 col-md-6 col-xl-3">
+            <div
+              class="project-card1"
+              [style]="
+                'background:url(' + ds.baseurl + '/media/images/' + i.url + ')'
+              "
+            >
+              <div class="project-container">
+                <div class="project-content">
+                  <h4>{{ i.name }}</h4>
+                  <p></p>
+                  <button class="btn btn-details" (click)="openUrl(i)">
+                    More Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+      <!-- <swiper
+        [navigation]="true"
+        [slidesPerView]="1"
+        [spaceBetween]="0"
+        [pagination]="{
+          clickable: true
+        }"
+        [breakpoints]="{
+          '640': {
+            slidesPerView: 1,
+            spaceBetween: 20
+          },
+          '768': {
+            slidesPerView: 2,
+            spaceBetween: 40
+          },
+          '1024': {
+            slidesPerView: 4,
+            spaceBetween: 50
+          }
+        }"
+        class="mySwiper"
+      >
+        <ng-template
+          class="item"
+          swiperSlide
+          *ngFor="let i of allPropertyTypes"
+        >
+          <div class="col-sm-6 col-md-6 col-xl-3">
+            <div
+              class="project-card1"
+              [style]="
+                'background:url(' + ds.baseurl + '/media/images/' + i.url + ')'
+              "
+            >
+              <div class="project-container">
+                <div class="project-content">
+                  <h4>{{ i.name }}</h4>
+                  <p></p>
+                  <button class="btn btn-details" (click)="openUrl(i)">
+                    More Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </swiper> -->
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <span class="aceSecTitle">{{ homeData.h3 }}</span>
+      </div>
+      <div class="col-12 text-center">
+        <h6 class="aceSecSubTitle">{{ homeData.s3 }}</h6>
+      </div>
+
+      <div class="drop-off-plan-prop">
+        <div class="dropdown mx-1">
+          <button
+            class="btn btn-secondary dropdown-toggle px-4"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ curentDevloper }}
+          </button>
+          <ul class="dropdown-menu">
+            <li
+              (click)="filterData({ id: 0, name: 'all' })"
+              style="cursor: pointer"
+            >
+              <a class="dropdown-item"> Filter - All </a>
+            </li>
+            <li
+              *ngFor="let i of allPropertyTypes2"
+              (click)="filterData(i)"
+              style="cursor: pointer"
+            >
+              <a class="dropdown-item">
+                {{ i.name }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-12 col-lg-4 col-md-4 mb-4" *ngFor="let i of filterArr">
+        <div
+          class="ace-location-card lCardImg1"
+          [style]="
+            'background: linear-gradient(0deg, #0000004d, #00000078),url(' +
+            ds.baseurl +
+            '/media/images/' +
+            i.url +
+            ')'
+          "
+        >
+          <div class="lCardContainer">
+            <div class="lCardText">{{ i.name }}</div>
+            <div>
+              <button
+                class="btn btn-dark btn-sm ace-btn-gray"
+                (click)="openProject(i)"
+              >
+                View All Properties
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

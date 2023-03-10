@@ -1,0 +1,111 @@
+<!-- Breadcrumb start -->
+<section id="acebreadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <nav
+          style="
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+            );
+          "
+          aria-label="breadcrumb"
+        >
+          <ol class="breadcrumb mb-0 d-flex align-items-center">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              <a routerLink="/blog">Blog</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ singleBlog.title }}
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Breadcrumb end -->
+
+<!-- Blog detail start -->
+<section id="ace-blog-details">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="bd-title text-center px-4">
+          {{ singleBlog.title }}
+        </h1>
+        <p class="bd-card-text text-center">
+          <!-- <small><i class="fa-regular fa-clock"></i> 10 mins</small> -->
+          <small class="ps-4"
+            ><i class="fa-regular fa-calendar"></i>
+            {{ singleBlog.fdate }}</small
+          >
+          <small class="ps-4"
+            ><i class="fa-regular fa-clock"></i> {{ singleBlog.ftime }}</small
+          >
+        </p>
+        <div class="bd-top-img mt-5">
+          <img [src]="ds.baseurl + '/media/images/' + singleBlog.url" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="py-4" [innerHtml]="singleBlog.postContent"></div>
+  </div>
+</section>
+<!-- Blog detail end -->
+
+<!-- blog slider start -->
+<section id="ace-blog-slider">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="border-single mt-4 mb-4"></div>
+        <h2 class="aceSecTitle text-center aceTitle-m">News</h2>
+        <h6 class="bs-subtitle text-center mb-0 lh-1">
+          Tips for Dubai property market
+        </h6>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div
+        class="col-lg-4"
+        *ngFor="let i of allBlogs"
+        style="cursor: pointer"
+        (click)="openBlog(i)"
+      >
+        <div class="card bs-card-outer mb-5">
+          <div class="row g-0">
+            <div class="col-md-12">
+              <div class="bs-card-img">
+                <a
+                  ><img [src]="ds.baseurl + '/media/images/' + i.url" alt="..."
+                /></a>
+              </div>
+              <div class="bs-card-body">
+                <div>
+                  <a class="bs-card-title">{{ i.categoryName }}</a>
+                </div>
+                <div>
+                  <a class="bs-card-text">{{ i.title }}</a>
+                </div>
+                <p class="bs-time">
+                  <!-- <small><i class="fa-regular fa-clock"></i> 10 mins</small> -->
+                  <small class="ps-4"
+                    ><i class="fa-regular fa-calendar"></i> {{ i.fDate }}</small
+                  >
+                  <small class="ps-4"
+                    ><i class="fa-regular fa-clock"></i> {{ i.fTime }}</small
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- blog slider end -->

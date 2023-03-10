@@ -1,0 +1,171 @@
+<div class="container">
+  <div class="card mt-5 box-shadows">
+    <div class="row gx-1">
+      <div
+        class="col-md-12 col-lg-5"
+        (click)="openPropery()"
+        style="cursor: pointer"
+      >
+        <img
+          *ngIf="cardData.imgType == 'url'"
+          [src]="cardData.propertyImages[0]"
+          class="img-fluid left-img"
+          alt="..."
+        />
+        <img
+          *ngIf="cardData.imgType != 'url'"
+          [src]="ds.baseurl + '/media/images/' + cardData.propertyImages[0]"
+          class="img-fluid left-img"
+          alt="..."
+        />
+      </div>
+      <div
+        class="col-md-12 col-lg-2"
+        (click)="openPropery()"
+        style="cursor: pointer"
+      >
+        <div id="mobile-view">
+          <div>
+            <img
+              *ngIf="cardData.imgType == 'url'"
+              [src]="cardData.propertyImages[1]"
+              class="img-fluid right-img"
+              alt="..."
+            />
+            <img
+              *ngIf="cardData.imgType != 'url'"
+              [src]="ds.baseurl + '/media/images/' + cardData.propertyImages[1]"
+              class="img-fluid right-img"
+              alt="..."
+            />
+          </div>
+
+          <div class="collage-container">
+            <div class="collage_column" style="width: 100%">
+              <figure class="view-more-img">
+                <img
+                  *ngIf="cardData.imgType == 'url'"
+                  [src]="cardData.propertyImages[2]"
+                  class="img-fluid"
+                />
+                <img
+                  *ngIf="cardData.imgType != 'url'"
+                  [src]="
+                    ds.baseurl + '/media/images/' + cardData.propertyImages[2]
+                  "
+                  class="img-fluid"
+                />
+                <span class="view-more-txt"
+                  ><a>
+                    <p><i class="fa-solid fa-images"></i></p>
+                    <p>View More</p>
+                  </a></span
+                >
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="prop-details" class="col-md-12 col-lg-5">
+        <div class="card-body card-pad">
+          <div (click)="openPropery()" style="cursor: pointer">
+            <h5 class="card-title">
+              {{ cardData.subProjectName }} , {{ cardData.ProjectName }}
+            </h5>
+            <h4 class="card-title">{{ cardData.price }} AED</h4>
+            <p class="card-text">
+              <span>{{ cardData.name }} </span>
+            </p>
+            <div class="prop-Nearby">
+              <p><strong>Nearby Places</strong></p>
+              <ul class="prop-places">
+                <li *ngFor="let i of nearbyJson">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  {{ i.name }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p class="prop-addrss" (click)="openMap()" style="cursor: pointer">
+            <i class="fa-solid fa-location-dot"></i> {{ cardData.address }}
+          </p>
+          <div (click)="openPropery()" style="cursor: pointer">
+            <ul class="prop-area">
+              <li>
+                <i class="fa-solid fa-bed"></i> {{ cardData.bedroom }} bedrooms
+                |
+              </li>
+              <li>
+                <i class="fa-solid fa-bath"></i>
+                {{ cardData.bathroom }} bathrooms |
+              </li>
+              <li>
+                <i class="fa-solid fa-ruler-combined"></i>
+                {{ cardData.sizeSqFt }} sqft
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer-bg">
+      <div class="row">
+        <div class="col-lg-12 col-xl-7 tag">
+          <ul class="list-tag">
+            <li class="active-tag">
+              <i class="fa-solid fa-star"></i>
+              {{ cardData.propertyListingStatusName }}
+            </li>
+            <li>
+              <i class="fa-solid fa-landmark"></i>
+              {{ cardData.PropertyTypeName }}
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-12 col-xl-5">
+          <div class="agent-details">
+            <div class="agent-img">
+              <img
+                [src]="ds.baseurl + 'users/images/' + cardData.UserPhoto"
+                alt=""
+                class="prop-agent"
+              />
+              <div>
+                <h5>{{ cardData.UserName }}</h5>
+                <p><i class="fa-solid fa-square-check"></i> Verified</p>
+              </div>
+            </div>
+            <div class="agent-contact">
+              <ul>
+                <li>
+                  <a href="tel:{{ cardData.UserPhone }}">
+                    <i class="fa-solid fa-phone" style="font-size: 12px"></i>
+                    <span style="font-size: 12px"> Call </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:{{ cardData.UserEmail }}">
+                    <i class="fa-solid fa-envelope" style="font-size: 12px"></i>
+                    <span style="font-size: 12px"> Email </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://wa.me/{{ cardData.UserPhone }}"
+                    target="_blank"
+                  >
+                    <i
+                      class="fa-brands fa-square-whatsapp"
+                      style="font-size: 12px"
+                    ></i>
+                    <span style="font-size: 12px"> WhatsApp </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

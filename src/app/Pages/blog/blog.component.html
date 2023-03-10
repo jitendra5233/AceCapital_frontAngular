@@ -1,0 +1,196 @@
+<!-- Breadcrumb start -->
+<section id="acebreadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <nav
+          style="
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+            );
+          "
+          aria-label="breadcrumb"
+        >
+          <ol class="breadcrumb mb-0 d-flex align-items-center">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Blog</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Breadcrumb end -->
+
+<section id="ace-blogs">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="ace-primary aceSecTitle text-center">News</h1>
+        <h6 class="aceSecSubTitle text-center mb-0 lh-1">
+          Tips for Dubai property market
+        </h6>
+        <div class="border-single border-mrgn"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- category section for mobile -->
+        <div class="blog-catg d-block d-lg-none mb-5">
+          <h5 class="blog-catg-title">Categories</h5>
+          <ul class="list-group">
+            <li
+              class="list-group-item"
+              *ngFor="let i of allBlogsC"
+              (click)="filterByCategory(i)"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                [checked]="i.status"
+                [disabled]="i.no == 0 ? true : false"
+                id="Sales1"
+              />
+              <label class="form-check-label" for="secondCheckbox">{{
+                i.name
+              }}</label>
+            </li>
+          </ul>
+        </div>
+        <!-- category section for mobile end -->
+        <!-- left side card start -->
+        <div
+          class="card card-outer mb-5"
+          *ngFor="let i of allBlogsfilter"
+          (click)="openBlog(i)"
+        >
+          <div class="row g-0">
+            <div class="col-md-5">
+              <a
+                ><img
+                  style="height: 100%"
+                  [src]="ds.baseurl + '/media/images/' + i.url"
+                  alt="..."
+              /></a>
+            </div>
+            <div class="col-md-7">
+              <div class="card-body">
+                <a
+                  ><h5 class="blog-card-title">{{ i.title }}</h5></a
+                >
+                <a>
+                  <div
+                    class="blogContent my-2"
+                    [innerHtml]="i.postContent"
+                  ></div>
+                </a>
+                <p class="card-text">
+                  <!-- <small><i class="fa-regular fa-clock"></i> 10 mins</small> -->
+                  <small class="ps-4"
+                    ><i class="fa-regular fa-calendar"></i> {{ i.fDate }}</small
+                  >
+                  <small class="ps-4"
+                    ><i class="fa-regular fa-clock"></i> {{ i.fTime }}</small
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- left side card end -->
+
+        <!-- Pagination start -->
+        <!-- <div class="row">
+          <div class="col-12 d-flex justify-content-center mt-4">
+            <nav aria-label="Page navigation" class="blog-pagination">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link active-page me-1" href="#">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link blog-pages mx-1" href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link blog-pages mx-1" href="#">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link blog-next ms-2" href="#"
+                    >NEXT <i class="fa-solid fa-chevron-right"></i
+                  ></a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div> -->
+        <!-- Pagination end -->
+      </div>
+      <!-- Right side Category section -->
+      <div class="col-lg-4 mt-4 mt-lg-0">
+        <!-- Category sec for desktop start -->
+        <div class="blog-catg d-none d-lg-block">
+          <h5 class="blog-catg-title">Categories</h5>
+          <ul class="list-group">
+            <li
+              class="list-group-item"
+              *ngFor="let i of allBlogsC"
+              (click)="filterByCategory(i)"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                [checked]="i.status"
+                [disabled]="i.no == 0 ? true : false"
+                id="Sales1"
+              />
+              <label class="form-check-label" for="secondCheckbox">{{
+                i.name
+              }}</label>
+            </li>
+          </ul>
+        </div>
+        <!-- Category sec for desktop end -->
+        <!-- Recent bolg secction start -->
+        <div class="blog-recent">
+          <div class="recent-head">
+            <h5 class="blog-catg-title">Recently Added</h5>
+          </div>
+          <!-- recent bolg start -->
+          <div
+            class="row gx-3 mt-4 blog-recent-row"
+            *ngFor="let i of allBlogs"
+            (click)="openBlog(i)"
+          >
+            <div class="col-md-4 blog-recent-item">
+              <a><img src="assets/img/blog-page.jpg" alt="" /></a>
+            </div>
+            <div class="col-md-8 blog-recent-item mt-4 mt-md-0">
+              <h5 class="mb-0">
+                <a class="blog-rec-catg">{{ i.title }}</a>
+              </h5>
+              <h6 class="my-2">
+                <!-- <a href="#" class="blog-rec-title">
+                  <div class="blogContent2" [innerHtml]="i.postContent"></div
+                ></a> -->
+              </h6>
+              <p>{{ i.fDate }}</p>
+            </div>
+          </div>
+          <!-- recent bolg end -->
+        </div>
+        <!-- recent bolg secction start -->
+        <!-- bolg ads start -->
+        <!-- <div class="blog-ads mt-4">
+          <div>
+            <a routerLink="/"><img src="assets/img/blog-ads.jpg" alt="" /></a>
+          </div>
+        </div> -->
+      </div>
+      <!-- bolg ads end -->
+      <!-- Right side Category section end-->
+    </div>
+  </div>
+</section>

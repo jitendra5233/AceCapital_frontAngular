@@ -1,0 +1,205 @@
+<!-- Breadcrumb start -->
+<section id="acebreadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <nav
+          style="
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+            );
+          "
+          aria-label="breadcrumb"
+        >
+          <ol class="breadcrumb mb-0 d-flex align-items-center">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item">
+              <a routerLink="/property-search">Property Listing</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ propertyDetail.name }}
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Breadcrumb end -->
+
+<!-- Section with images start -->
+<section id="single-sec1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-6 single-sec1-map">
+        <ul>
+          <li>
+            <i class="fa-solid fa-location-dot fa-fw"></i>
+            {{ propertyDetail.address }}
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6 col-lg-6 text-md-end sing-prop-sale mt-2 mt-md-0">
+        <p style="display: none" class="mb-0">
+          Properties for Sale in {{ propertyDetail.address }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 my-2 sing-top-title">
+        <h1>
+          {{ propertyDetail.PropertyTypeName }} with
+          {{ propertyDetail.bedroom }} bedrooms in
+          {{ propertyDetail.ProjectName }}
+        </h1>
+      </div>
+    </div>
+    <div class="row gx-1">
+      <div class="col-md-12 col-lg-6 sing-prop-amenity">
+        <ul>
+          <li>Villa</li>
+          <li>
+            <i class="fa-solid fa-bed fa-fw"></i>
+            {{ propertyDetail.bedroom }} Bedrooms
+          </li>
+          <li>
+            <i class="fa-solid fa-bath fa-fw"></i>
+            {{ propertyDetail.bathroom }} Washroom
+          </li>
+          <li class="srft">
+            <i class="fa-solid fa-ruler-combined fa-fw"></i>
+            {{ propertyDetail.sizeSqFt }} Sq.Ft
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-12 col-lg-6 mt-2 mt-md-0 text-lg-end sing-prop-share">
+        <ul>
+          <li>Share this:</li>
+          <li>
+            <a
+              href="https://api.whatsapp.com/send?text={{ shareMessage }}"
+              target="_blank"
+              ><i class="fa-brands fa-whatsapp fa-fw"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://www.facebook.com/sharer/sharer.php?u={{
+                encodedURL
+              }}"
+              target="_blank"
+              ><i class="fa-brands fa-facebook-f fa-fw"></i
+            ></a>
+          </li>
+          <li>
+            <a href="http://twitter.com/share?text=encodedURL" target="_blank"
+              ><i class="fa-brands fa-twitter fa-fw"></i
+            ></a>
+          </li>
+          <!-- <li>
+            <a href="https://in.linkedin.com/" target="_blank"
+              ><i class="fa-brands fa-linkedin-in fa-fw"></i
+            ></a>
+          </li>
+          <li>
+            <a href="mailto:{{ propertyDetail.UserEmail }}" target="_blank"
+              ><i class="fa-solid fa-envelope fa-fw"></i
+            ></a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+    <!-- <div class="row mt-4 gx-2 gx-md-3">
+      <div class="col-7 col-md-7 col-lg-7 single-sec1-img1">
+        <div>
+          <img
+            [src]="
+              ds.baseurl + '/media/images/' + propertyDetail.propertyImages[0]
+            "
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="col-5 col-md-5 col-lg-5 single-sec1-img2">
+        <div>
+          <img
+            style="height: 277px"
+            [src]="
+              ds.baseurl + '/media/images/' + propertyDetail.propertyImages[1]
+            "
+            alt=""
+          />
+        </div>
+        <div class="singl-sec1-more mt-2 mt-md-3" style="height: 277px">
+          <img
+            style="height: 277px"
+            [src]="
+              ds.baseurl + '/media/images/' + propertyDetail.propertyImages[2]
+            "
+            alt=""
+          />
+          <div class="singl-center-txt">
+            <a href="#"><i class="fa-solid fa-plus"></i> View More</a>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="row mt-4 gx-2 gx-md-3">
+      <div class="col-7 col-md-7 col-lg-7 single-sec1-img1">
+        <div class="single-left-img">
+          <img
+            *ngIf="propertyDetail.imgType == 'url'"
+            [src]="propertyDetail.propertyImages[0]"
+            (click)="open(1)"
+            alt=""
+          />
+          <img
+            *ngIf="propertyDetail.imgType != 'url'"
+            [src]="
+              ds.baseurl + '/media/images/' + propertyDetail.propertyImages[0]
+            "
+            (click)="open(1)"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="col-5 col-md-5 col-lg-5 single-sec1-img2">
+        <div class="top-img">
+          <img
+            *ngIf="propertyDetail.imgType == 'url'"
+            [src]="propertyDetail.propertyImages[2]"
+            (click)="open(2)"
+            alt=""
+          />
+          <img
+            *ngIf="propertyDetail.imgType != 'url'"
+            [src]="
+              ds.baseurl + '/media/images/' + propertyDetail.propertyImages[2]
+            "
+            (click)="open(2)"
+            alt=""
+          />
+        </div>
+        <div (click)="open(1)" class="singl-sec1-more mt-2 mt-md-3">
+          <img
+            *ngIf="propertyDetail.imgType == 'url'"
+            [src]="propertyDetail.propertyImages[2]"
+            alt=""
+          />
+          <img
+            *ngIf="propertyDetail.imgType != 'url'"
+            [src]="
+              ds.baseurl + '/media/images/' + propertyDetail.propertyImages[2]
+            "
+            alt=""
+          />
+          <div class="singl-center-txt">
+            <a><i class="fa-solid fa-plus"></i> View More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section with images end -->

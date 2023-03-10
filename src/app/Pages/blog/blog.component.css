@@ -1,0 +1,30 @@
+.form-check-label {
+  padding: 0 10px;
+}
+
+.blogContent {
+  display: block;
+  height: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.blogContent2 {
+  display: block;
+  height: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.blog-card-title {
+  cursor: pointer;
+}
+
+.blog-rec-catg {
+  cursor: pointer;
+}

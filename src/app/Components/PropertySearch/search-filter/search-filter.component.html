@@ -1,0 +1,559 @@
+<section id="acepropfilter">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-12 col-lg-3 col-xl-3 search-bdr"
+        style="display: flex; align-items: center"
+      >
+        <div class="input-search">
+          <input
+            type="search"
+            placeholder="Community or building"
+            ngx-google-places-autocomplete
+            (onAddressChange)="AddressChange($event)"
+            id="locationTextField2"
+          />
+          <button (click)="handleSubmitFilter()" type="submit">Search</button>
+        </div>
+        <p class="d-lg-none mb-0">
+          <button
+            class="btn ace-filter-btn"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapse-button"
+            aria-expanded="true"
+            aria-controls="collapse-button"
+            data-bs-auto-close="outside"
+          >
+            Filters
+          </button>
+        </p>
+      </div>
+      <div class="col-12 col-lg-9 col-xl-9 flex-nowrap" id="mobile-btn">
+        <!-- Tab button start -->
+
+        <div class="collapse" id="collapse-button">
+          <div class="card card-body">
+            <div class="btn-group">
+              <select
+                class="form-select ace-prop-btn"
+                aria-label="Default select example"
+                [(ngModel)]="pType"
+                (change)="handleSubmitFilter()"
+              >
+                <option value="0" selected>Property Type</option>
+                <option [value]="i.id" *ngFor="let i of allPropertyTypes">
+                  {{ i.name }}
+                </option>
+              </select>
+            </div>
+            <div class="btn-group">
+              <select
+                class="form-select ace-prop-btn"
+                aria-label="Default select example"
+                [(ngModel)]="purpose"
+                (change)="handleSubmitFilter()"
+              >
+                <option value="1" selected>Buy</option>
+                <option value="2">Rent</option>
+              </select>
+            </div>
+            <div
+              class="btn-group"
+              style="width: 100%; flex-direction: column; padding: 0 10px"
+            >
+              <!-- <div style="text-align: center">Price Range</div>
+              <div class="custom-slider2" style="width: 100%">
+                <ngx-slider
+                  [(value)]="value2"
+                  [(highValue)]="highValue2"
+                  [options]="options2"
+                ></ngx-slider>
+                
+              </div>-->
+              <mat-slider style="width: 95%" [min]="value2" [max]="highValue2">
+                <input
+                  [value]="minPrice"
+                  matSliderStartThumb
+                  [(ngModel)]="minPrice"
+                />
+                <input
+                  [value]="maxPrice"
+                  matSliderEndThumb
+                  [(ngModel)]="maxPrice"
+                />
+              </mat-slider>
+            </div>
+            <div class="row" style="line-height: 0">
+              <div class="col-4">{{ minPrice }} K</div>
+              <div class="col-4" style="text-align: center">AED</div>
+              <div class="col-4" style="text-align: end">{{ maxPrice }} K</div>
+            </div>
+            <!-- <div class="btn-group">
+              <select
+                class="form-select ace-prop-btn"
+                aria-label="Default select example"
+                [(ngModel)]="minPrice"
+                (change)="handleSubmitFilter()"
+              >
+                <option value="00" selected>Price Min</option>
+                <option value="0">AED 0</option>
+                <option value="200000">AED 200,000</option>
+                <option value="300000">AED 300,000</option>
+                <option value="400000">AED 400,000</option>
+                <option value="500000">AED 500,000</option>
+                <option value="1000000">AED 1,000,000</option>
+                <option value="2000000">AED 2,000,000</option>
+                <option value="3000000">AED 3,000,000</option>
+                <option value="4000000">AED 4,000,000</option>
+                <option value="5000000">AED 5,000,000</option>
+                <option value="10000000">AED 10,000,000</option>
+                <option value="20000000">AED 20,000,000</option>
+                <option value="30000000">AED 30,000,000</option>
+                <option value="40000000">AED 40,000,000</option>
+                <option value="50000000">AED 50,000,000</option>
+                <option value="90000000">AED 90,000,000</option>
+              </select>
+            </div> -->
+            <!-- <div class="btn-group">
+              <select
+                class="form-select ace-prop-btn"
+                aria-label="Default select example"
+                [(ngModel)]="maxPrice"
+                (change)="handleSubmitFilter()"
+              >
+                <option value="00" selected>Price Max</option>
+                <option value="200000">AED 200,000</option>
+                <option value="300000">AED 300,000</option>
+                <option value="400000">AED 400,000</option>
+                <option value="500000">AED 500,000</option>
+                <option value="1000000">AED 1,000,000</option>
+                <option value="2000000">AED 2,000,000</option>
+                <option value="3000000">AED 3,000,000</option>
+                <option value="4000000">AED 4,000,000</option>
+                <option value="5000000">AED 5,000,000</option>
+                <option value="10000000">AED 10,000,000</option>
+                <option value="20000000">AED 20,000,000</option>
+                <option value="30000000">AED 30,000,000</option>
+                <option value="40000000">AED 40,000,000</option>
+                <option value="50000000">AED 50,000,000</option>
+                <option value="90000000">AED 90,000,000</option>
+                <option value="100000000">AED 100,000,000</option>
+              </select>
+            </div> -->
+            <div class="btn-group">
+              <select
+                class="form-select ace-prop-btn"
+                aria-label="Default select example"
+                [(ngModel)]="beds"
+                (change)="handleSubmitFilter()"
+              >
+                <option value="00" selected>Beds</option>
+                <option value="0">Any</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+            <div class="btn-group dropdown">
+              <!-- form -->
+
+              <button
+                type="button"
+                class="btn ace-more-btn d-flex justify-content-between align-items-center dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                data-bs-auto-close="outside"
+              >
+                More Filters
+                <span class="plus"><i class="fa-solid fa-plus"></i></span>
+              </button>
+              <form class="dropdown-menu p-3 more-dropdown dropdown-menu-wm">
+                <h6>Status</h6>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    name="radioFilter"
+                    type="radio"
+                    value=""
+                    id="flexCheckDefault"
+                    checked
+                    (click)="upadatefilterCheck(1)"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Residential
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="radioFilter"
+                    value=""
+                    id="flexCheckDefault"
+                    (click)="upadatefilterCheck(2)"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Commercial
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    value=""
+                    name="radioFilter"
+                    id="flexCheckChecked"
+                    (click)="upadatefilterCheck(3)"
+                  />
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Off-Plan
+                  </label>
+                </div>
+
+                <div class="wrapper-slider">
+                  <h6 class="mt-2">Property Size</h6>
+                  <div class="custom-slider">
+                    <!-- <ngx-slider
+                      [(value)]="minSize"
+                      [options]="options"
+                      [(highValue)]="maxValue"
+                    ></ngx-slider> -->
+                    <ngx-slider
+                      [(value)]="value8"
+                      [(highValue)]="highValue8"
+                      [options]="options8"
+                    ></ngx-slider>
+                  </div>
+                </div>
+                <div>
+                  <button class="filterBtn" (click)="handleSubmitFilter(true)">
+                    Apply
+                  </button>
+                </div>
+              </form>
+              <!-- form end -->
+            </div>
+          </div>
+        </div>
+        <!-- Tab button end -->
+        <div class="d-none d-lg-block d-flex align-items-center flex-row">
+          <div class="btn-group">
+            <select
+              class="form-select ace-prop-btn"
+              aria-label="Default select example"
+              [(ngModel)]="pType"
+              (change)="handleSubmitFilter()"
+            >
+              <option selected value="0">Property Type</option>
+              <option [value]="i.id" *ngFor="let i of allPropertyTypes">
+                {{ i.name }}
+              </option>
+            </select>
+          </div>
+          <div class="btn-group">
+            <select
+              class="form-select ace-prop-btn"
+              aria-label="Default select example"
+              [(ngModel)]="purpose"
+              (change)="handleSubmitFilter()"
+            >
+              <option value="1" selected>Buy</option>
+              <option value="2">Rent</option>
+            </select>
+          </div>
+          <div
+            class="btn-group"
+            style="width: 40%; flex-direction: column; padding: 0 10px"
+          >
+            <div class="custom-slider2" style="width: 100%">
+              <!-- <ngx-slider
+              [(value)]="value2"
+              [(highValue)]="highValue2"
+              [options]="options2"
+              ></ngx-slider> -->
+              <mat-slider style="width: 95%" [min]="value2" [max]="highValue2">
+                <input
+                  [value]="minPrice"
+                  matSliderStartThumb
+                  [(ngModel)]="minPrice"
+                />
+                <input
+                  [value]="maxPrice"
+                  matSliderEndThumb
+                  [(ngModel)]="maxPrice"
+                />
+              </mat-slider>
+            </div>
+            <div class="row" style="line-height: 0">
+              <div class="col-4">{{ minPrice }} K</div>
+              <div class="col-4" style="text-align: center">AED</div>
+              <div class="col-4" style="text-align: end">{{ maxPrice }} K</div>
+            </div>
+          </div>
+          <!-- <div class="btn-group">
+            <select
+              class="form-select ace-prop-btn"
+              aria-label="Default select example"
+              [(ngModel)]="minPrice"
+              (change)="handleSubmitFilter()"
+            >
+              <option value="00" selected>Price Min</option>
+              <option *ngFor="let i of currentDataMin" [value]="i.value">
+                {{ i.name }}
+              </option>
+            </select>
+          </div>
+          <div class="btn-group">
+            <select
+              class="form-select ace-prop-btn"
+              aria-label="Default select example"
+              [(ngModel)]="maxPrice"
+              (change)="handleSubmitFilter()"
+            >
+              <option value="00" selected>Price Max</option>
+              <option *ngFor="let i of currentDataMax" [value]="i.value">
+                {{ i.name }}
+              </option>
+            </select>
+          </div> -->
+          <div class="btn-group">
+            <select
+              [(ngModel)]="beds"
+              class="form-select ace-prop-btn"
+              aria-label="Default select example"
+              (change)="handleSubmitFilter()"
+            >
+              <option value="00" selected>Beds</option>
+              <option value="0">Any</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+          <div class="btn-group">
+            <!-- form -->
+
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn ace-more-btn d-flex justify-content-between align-items-center dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                data-bs-auto-close="outside"
+                id="btnFilter"
+              >
+                More Filters
+                <span class="plus"><i class="fa-solid fa-plus"></i></span>
+              </button>
+              <form class="dropdown-menu p-3 more-dropdown dropdown-menu-w">
+                <h6>Status</h6>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    name="radioFilter"
+                    type="radio"
+                    value=""
+                    id="flexCheckDefault"
+                    checked
+                    (click)="upadatefilterCheck(1)"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Residential
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="radioFilter"
+                    value=""
+                    id="flexCheckDefault"
+                    (click)="upadatefilterCheck(2)"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Commercial
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    value=""
+                    name="radioFilter"
+                    id="flexCheckChecked"
+                    (click)="upadatefilterCheck(3)"
+                  />
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Off-Plan
+                  </label>
+                </div>
+
+                <div class="wrapper-slider">
+                  <h6 class="mt-2">Property Size</h6>
+                  <div class="custom-slider">
+                    <!-- <ngx-slider
+                      [(value)]="minSize"
+                      [options]="options"
+                      [(highValue)]="maxValue"
+                    ></ngx-slider> -->
+                    <!-- <ngx-slider
+                      [(value)]="value"
+                      [(highValue)]="highValue"
+                      [options]="options"
+                    ></ngx-slider> -->
+                    <ngx-slider
+                      [(value)]="value7"
+                      [(highValue)]="highValue7"
+                      [options]="options7"
+                    ></ngx-slider>
+                  </div>
+                </div>
+                <div>
+                  <button class="filterBtn" (click)="handleSubmitFilter(true)">
+                    Apply
+                  </button>
+                </div>
+              </form>
+            </div>
+            <!-- form end -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1 class="aceResTitle">PROPERTIES AVAILABLE IN DUBAI</h1>
+        <h5>
+          FIND YOUR PROPERTY THAT SUITS YOU
+          <span class="result-list" *ngIf="showResult == true">Results</span>
+          <span class="res-count" *ngIf="showResult == true">
+            {{ allPropertys.length }}</span
+          >
+        </h5>
+      </div>
+
+      <div class="col-md-3">
+        <div class="btn-group">
+          <select
+            class="form-select ace-prop-btn tab-view"
+            aria-label="Default select example"
+            (change)="filterSort()"
+            [(ngModel)]="sortOption"
+          >
+            <option value="1">Ascending</option>
+            <option value="2">Descending</option>
+          </select>
+        </div>
+        <button [class]="'result-btn ' + fullbtn1" (click)="changeGrid(1)">
+          <i class="fa-solid fa-table-cells-large"></i>
+        </button>
+        <button [class]="'result-btn ' + fullbtn2" (click)="changeGrid(2)">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <!-- <button class="result-btn">
+          <i class="fa-solid fa-location-dot"></i>
+        </button> -->
+      </div>
+    </div>
+    <div class="border-single mt-3 mb-3"></div>
+    <div *ngIf="showResult == true">
+      <div *ngIf="allPropertys.length == 0">
+        <div class="row my-5">
+          <div class="col-12" style="text-align: center">
+            <h2>Sorry No Property Avaliable</h2>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="fullwidth == true">
+        <app-property-card
+          *ngFor="let i of allPropertys"
+          [cardData]="i"
+        ></app-property-card>
+      </div>
+    </div>
+    <div *ngIf="fullwidth == false">
+      <div class="container">
+        <div class="row mt-5">
+          <div
+            class="col-sm-6 col-md-6 col-xl-4 mb-4"
+            *ngFor="let i of allPropertys"
+          >
+            <div class="off-plan-property">
+              <div>
+                <swiper [navigation]="true" class="mySwiper">
+                  <ng-template swiperSlide *ngFor="let x of i.propertyImages">
+                    <img
+                      *ngIf="i.imgType == 'url'"
+                      [src]="x"
+                      alt=""
+                      style="width: 100%"
+                    />
+                    <img
+                      *ngIf="i.imgType != 'url'"
+                      [src]="ds.baseurl + 'media/images/' + x"
+                      alt=""
+                      style="width: 100%"
+                    />
+                  </ng-template>
+                </swiper>
+              </div>
+              <div
+                class="op-prop-content"
+                style="cursor: pointer"
+                (click)="openPropery(i)"
+              >
+                <h4>{{ i.name }}</h4>
+                <div class="op-location">
+                  <i class="fa-solid fa-location-dot"></i> {{ i.address }}
+                </div>
+                <div class="op-place">AED {{ i.price }}</div>
+                <ul>
+                  <li>
+                    <i class="fa-solid fa-bed fa-fw"></i>
+                    <span>{{ i.bedroom }} Beds</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-bath fa-fw"></i>
+                    <span>{{ i.bathroom }} Bath</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="op-prop-ftr">
+                <div class="op-prop-ftr-img">
+                  <img
+                    [src]="ds.baseurl + 'users/images/' + i.UserPhoto"
+                    alt=""
+                  />
+                </div>
+                <h5>{{ i.UserName }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

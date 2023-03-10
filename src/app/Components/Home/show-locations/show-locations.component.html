@@ -1,0 +1,41 @@
+<section class="py-5" style="background-color: #f8f8f8">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <span class="ace-primary aceSecTitle">{{ homeData.h3 }}</span>
+      </div>
+      <div class="col-12 text-center">
+        <h6 class="aceSecSubTitle">{{ homeData.s3 }}</h6>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div
+        class="col-12 col-lg-4 col-md-4 mb-4"
+        *ngFor="let i of allPropertyTypes"
+      >
+        <div
+          class="ace-location-card lCardImg1"
+          [style]="
+            'background: linear-gradient(0deg, #0000004d, #00000078),url(' +
+            ds.baseurl +
+            '/media/images/' +
+            i.url +
+            ')'
+          "
+        >
+          <div class="lCardContainer">
+            <div class="lCardText">{{ i.name }}</div>
+            <div>
+              <button
+                class="btn btn-dark btn-sm ace-btn-gray"
+                (click)="openProject(i)"
+              >
+                View All Properties
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

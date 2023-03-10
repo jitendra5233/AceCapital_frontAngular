@@ -1,0 +1,257 @@
+<!-- Breadcrumb start -->
+<section id="acebreadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <nav
+          style="
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+            );
+          "
+          aria-label="breadcrumb"
+        >
+          <ol class="breadcrumb mb-0 d-flex align-items-center">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item">
+              {{ OpendProject.name }}
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Breadcrumb end -->
+
+<section id="off-plan-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="damac-txt-container">
+          <div class="damac-hero-txt">
+            <h1>{{ OpendProject.name }}</h1>
+            <p>{{ OpendProject.location }}</p>
+            <!-- <button class="btn btn-view">View Property</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="off-plan-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="off-plan-left-img">
+          <img
+            [src]="ds.baseurl + '/media/images/' + OpendProject.url"
+            alt=""
+          />
+          <div class="green-overley"></div>
+        </div>
+      </div>
+      <div class="col-lg-7 off-plan-right-contnt mt-5 mt-lg-0">
+        <h2 class="off-plan-title">{{ OpendProject.name }}</h2>
+        <div [innerHTML]="OpendProject.description"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="lifestyle">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h2 class="off-plan-title mb-5">
+          COME HOME TO AN UNPARALLELED LIFESTYLE
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <owl-carousel-o [options]="customOptions">
+          <ng-template
+            *ngFor="let i of OpendProject.propertyImages"
+            carouselSlide
+          >
+            <a>
+              <div class="lifestyle-img">
+                <img [src]="ds.baseurl + '/media/images/' + i" alt="" />
+              </div>
+            </a>
+          </ng-template>
+        </owl-carousel-o>
+        <!-- <swiper
+          [navigation]="true"
+          [slidesPerView]="1"
+          [spaceBetween]="10"
+          [pagination]="{
+            clickable: true
+          }"
+          [breakpoints]="{
+            '640': {
+              slidesPerView: 1,
+              spaceBetween: 20
+            },
+            '768': {
+              slidesPerView: 2,
+              spaceBetween: 40
+            },
+            '1024': {
+              slidesPerView: 4,
+              spaceBetween: 50
+            }
+          }"
+          class="mySwiper"
+        >
+          <ng-template
+            class="item"
+            swiperSlide
+            *ngFor="let i of OpendProject.propertyImages"
+          >
+            <a>
+              <div class="lifestyle-img">
+                <img [src]="ds.baseurl + '/media/images/' + i" alt="" />
+              </div>
+            </a>
+          </ng-template>
+        </swiper> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="off-plan-projects">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="off-plan-title text-center">PROJECTS</h2>
+        <h6 class="off-plan-subtitle text-center mb-0 lh-1">
+          Tips for Dubai property market
+        </h6>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <owl-carousel-o [options]="customOptions">
+        <ng-template *ngFor="let i of subProjects" carouselSlide>
+          <div class="col-sm-6 col-md-6 col-xl-3">
+            <div
+              class="project-card1"
+              [style]="
+                'background:url(' + ds.baseurl + '/media/images/' + i.url + ')'
+              "
+            >
+              <div class="project-container">
+                <div class="project-content">
+                  <h4>{{ i.name }}</h4>
+                  <p>At {{ OpendProject.name }}</p>
+                  <button class="btn btn-details" (click)="openUrl(i)">
+                    More Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+      <!-- <swiper
+        [navigation]="true"
+        [slidesPerView]="1"
+        [spaceBetween]="0"
+        [pagination]="{
+          clickable: true
+        }"
+        class="mySwiper"
+        [breakpoints]="{
+          '640': {
+            slidesPerView: 1,
+            spaceBetween: 20
+          },
+          '768': {
+            slidesPerView: 2,
+            spaceBetween: 40
+          },
+          '1024': {
+            slidesPerView: 4,
+            spaceBetween: 50
+          }
+        }"
+      >
+        <ng-template class="item" swiperSlide *ngFor="let i of subProjects">
+          <div class="col-sm-6 col-md-6 col-xl-3">
+            <div
+              class="project-card1"
+              [style]="
+                'background:url(' + ds.baseurl + '/media/images/' + i.url + ')'
+              "
+            >
+              <div class="project-container">
+                <div class="project-content">
+                  <h4>{{ i.name }}</h4>
+                  <p>At {{ OpendProject.name }}</p>
+                  <button class="btn btn-details" (click)="openUrl(i)">
+                    More Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </swiper> -->
+    </div>
+  </div>
+</section>
+
+<section id="off-plan-more">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="off-plan-more-txt">
+          <h2>MORE ABOUT {{ OpendProject.name }}</h2>
+          <p>
+            {{ OpendProject.short_description }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="off-plan-map">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mt-5">
+        <h2 class="off-plan-title mb-5">
+          PERFECT LOCATION IN THE HEART OF DUBAI
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <!-- <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14442.159500634596!2d55.2743519!3d25.18500985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f682def25f457%3A0x3dd4c4097970950e!2sBusiness%20Bay%20-%20Dubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1670670507271!5m2!1sen!2sin"
+          width="100%"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe> -->
+
+        <iframe
+          [src]="iframeUrl"
+          width="100%"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+        <!-- <google-map style="width: 100px" [options]="options"></google-map> -->
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,80 @@
+<section class="py-5 acehomelightBg1">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <span class="ace-primary aceSecTitle">{{ homeData.h1 }}</span>
+      </div>
+      <div class="col-12 text-center">
+        <h6 class="aceSecSubTitle">{{ homeData.s1 }}</h6>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-12 col-lg-6 col-md-6">
+        <div class="card ace-card" [style]="'background:url(' + imgcard1 + ')'">
+          <div class="card-body">
+            <div class="row ace_rh-100 align-items-center">
+              <div class="col-4 col-sm-7 col-md-4 col-lg-6"></div>
+              <div class="col-8 col-sm-5 col-md-8 col-lg-6">
+                <div>
+                  <h6 class="small-title m-0">{{ homeData.microtitle1 }}</h6>
+                </div>
+                <div class="big-title-outer2">
+                  <span style="line-height: 1.2" class="big-title m-0">{{
+                    homeData.cardheading1
+                  }}</span>
+                </div>
+                <div>
+                  <h6 class="medium-title m-0">
+                    {{ homeData.cardsubheading1 }}
+                  </h6>
+                </div>
+                <div class="mt-2">
+                  <button
+                    type="button"
+                    class="btn btn-dark btn-prop-green"
+                    (click)="opencustomlink(homeData.btnlink1)"
+                  >
+                    {{ homeData.buttontext1 }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 col-md-6 new-prop-margin">
+        <div class="card ace-card" [style]="'background:url(' + imgcard2 + ')'">
+          <div class="card-body">
+            <div class="row ace_rh-100 align-items-center">
+              <div class="col-4 col-sm-7 col-img col-md-4 col-lg-6"></div>
+              <div class="col-8 col-sm-5 col-md-8 col-lg-6">
+                <div>
+                  <h6 class="small-title m-0">{{ homeData.microtitle2 }}</h6>
+                </div>
+                <div class="big-title-outer">
+                  <span style="line-height: 1.2" class="big-title m-0">{{
+                    homeData.cardheading2
+                  }}</span>
+                </div>
+                <div>
+                  <h6 class="medium-title m-0">
+                    {{ homeData.cardsubheading2 }}
+                  </h6>
+                </div>
+                <div class="mt-2">
+                  <button
+                    type="button"
+                    class="btn btn-dark btn-prop-green"
+                    (click)="opencustomlink(homeData.btnlink2)"
+                  >
+                    {{ homeData.buttontext2 }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,163 @@
+<!-- Breadcrumb start -->
+<section id="acebreadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <nav
+          style="
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+            );
+          "
+          aria-label="breadcrumb"
+        >
+          <ol class="breadcrumb mb-0 d-flex align-items-center">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Career</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Breadcrumb end -->
+
+<!-- career -->
+<section id="ace-career">
+  <div class="container">
+    <!-- <div class="row">
+          <div class="col-md-12 text-center mb-4 career-head d-flex justify-content-end flex-column">
+            <h1>Join us as we reimagine real estate.</h1>
+            <p>We’re on a mission to give our employees, our customers and our partners the power to unlock life’s next chapter.</p>
+          </div>
+        </div> -->
+    <div class="row">
+      <div
+        class="col-md-6 col-lg-6 my-4 my-lg-0 d-lg-flex justify-content-center align-items-center"
+      >
+        <div>
+          <div class="my-5">
+            <h1 style="color: white">Why Ace Capital?</h1>
+          </div>
+          <div>
+            <h5 style="color: #ffffffbd; font-size: 17px">
+              A Dubai-based real estate brokerage focusing on research-based
+              real estate brokerage services. We are a group of expert real
+              estate advisors with a stellar reputation and a long list of
+              satisfied clients all around the world. We believe in finding you
+              the right property to invest or settle in.
+            </h5>
+            <h5 style="color: #ffffffbd; font-size: 17px" class="my-3">
+              We are looking for people who are as passionate about helping
+              clients find their perfect homes in the UAE as Ace Capital is.
+            </h5>
+            <h5 style="color: #ffffffbd; font-size: 17px">
+              We are always looking for talented and passionate individuals to
+              join our team, so please don't hesitate to apply. Get competitive
+              commissions & valuable real estate knowledge.
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-md-6 col-lg-6 my-4 my-lg-0 d-lg-flex justify-content-end align-items-center"
+      >
+        <div class="career-form" style="width: 100%">
+          <div class="career-head">
+            <h1>Join us</h1>
+            <p style="text-align: center">Grow your career with Ace Capital!</p>
+          </div>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="name" class="form-label career-input-label"
+                >Name</label
+              >
+              <input
+                [(ngModel)]="name"
+                type="text"
+                class="form-control career-input-bg"
+                id="name"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label career-input-label"
+                >Phone</label
+              >
+              <input
+                [(ngModel)]="phone"
+                type="text"
+                class="form-control career-input-bg"
+                id="phone"
+                required
+              />
+            </div>
+            <!-- <div class="col-md-6">
+                  <label for="position" class="form-label career-input-label">Position</label>
+                  <select class="form-select career-input-bg" aria-label="Default select example">
+                    <option selected>Agent</option>
+                    <option value="1">Project Manager</option>
+                    <option value="2">Project Head</option>
+                    <option value="3">Admin</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="position" class="form-label career-input-label">Location</label>
+                  <select class="form-select career-input-bg" aria-label="Default select example">
+                    <option selected>Al Bastakiya</option>
+                    <option value="1">Business Bay</option>
+                    <option value="2">Downtown Dubai</option>
+                    <option value="3">Dubai Marina</option>
+                  </select>
+                </div> -->
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label career-input-label"
+                >Email</label
+              >
+              <input
+                [(ngModel)]="email"
+                type="email"
+                class="form-control career-input-bg"
+                id="inputEmail4"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="formFile" class="form-label career-input-label"
+                >Upload CV</label
+              >
+              <input
+                (change)="onChange($event)"
+                [(ngModel)]="fileNametest"
+                class="form-control career-input-bg"
+                type="file"
+                id="formFile"
+              />
+            </div>
+            <div class="col-12">
+              <label
+                for="exampleFormControlTextarea1"
+                class="form-label career-input-label"
+                >Message</label
+              >
+              <textarea
+                [(ngModel)]="message"
+                class="form-control career-input-bg"
+                id="exampleFormControlTextarea1"
+                rows="2"
+              ></textarea>
+            </div>
+            <div class="col-12">
+              <button class="btn submitbtn" (click)="handleSubmit()">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<!-- career end -->

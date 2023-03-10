@@ -1,0 +1,210 @@
+<!-- About property section start -->
+<section id="single-sec2">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a
+              [class]="'nav-link tab-link ' + active1"
+              aria-current="page"
+              routerLink="./"
+              fragment="nav-about"
+              (click)="changeActive(1)"
+              >About</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              [class]="'nav-link tab-link ' + active2"
+              routerLink="./"
+              fragment="nav-ameneties"
+              (click)="changeActive(2)"
+              >Ameneties Others</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              [class]="'nav-link tab-link ' + active3"
+              routerLink="./"
+              fragment="nav-location"
+              (click)="changeActive(3)"
+              >Nearby</a
+            >
+          </li>
+        </ul>
+
+        <div class="singl-prop-content" id="nav-about">
+          <h3>About Property</h3>
+          <div [innerHtml]="propertyDetail.description"></div>
+        </div>
+        <hr />
+        <div class="single-prop-table table-responsive">
+          <h3>Property Details</h3>
+          <table class="table table-striped mt-4 table-bordered">
+            <tbody>
+              <tr>
+                <td>Bedrooms</td>
+                <td>{{ propertyDetail.bedroom }}</td>
+              </tr>
+              <tr>
+                <td>Bathrooms</td>
+                <td>{{ propertyDetail.bathroom }}</td>
+              </tr>
+              <tr>
+                <td>Dimensions</td>
+                <td>{{ propertyDetail.sizeSqFt }} Sq Ft</td>
+              </tr>
+              <tr>
+                <td>Type</td>
+                <td>{{ propertyDetail.PropertyTypeName }}</td>
+              </tr>
+              <tr>
+                <td>Developer</td>
+                <td>{{ propertyDetail.ProjectName }}</td>
+              </tr>
+              <tr>
+                <td>Status</td>
+                <td>{{ propertyDetail.propertyListingStatusName }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row mt-4">
+          <div
+            class="col-sm-6 col-md-6 col-lg-6 singl-detail-list ps-5 ps-sm-3"
+            id="nav-ameneties"
+          >
+            <h3>Ameneties Others</h3>
+            <ul class="mt-4">
+              <li *ngFor="let i of Ameneties">
+                <i [class]="'fa-solid ' + i.icon + ' fa-fw'"></i>{{ i.text }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-12 col-lg-12" id="nav-location">
+            <div class="loc-head">
+              <h3>Nearby Locations</h3>
+              <p></p>
+            </div>
+            <div class="singl-location" *ngFor="let i of nearBy">
+              <div *ngIf="i.name != '' ">
+                <h4 class="mb-3">
+                  <i class="fa-solid fa-location-dot fa-fw"></i> {{ i.name }}
+                </h4>
+                <ul>
+                  <li class="loc-items" *ngFor="let x of i.places">
+                    <p>
+                      <i class="fa-solid fa-circle"></i> {{ x.name
+                      }}<span> {{ x.distance }}</span>
+                    </p>
+                    <p class="ms-3 ms-lg-0">
+                      {{ x.duration }}
+                      <a
+                        [href]="
+                          ds.baseurl +
+                          'open_location/?l1=' +
+                          propertyDetail.address +
+                          '&l2=' +
+                          x.name
+                        "
+                        target="_blank"
+                        >(Directions)</a
+                      >
+                    </p>
+                  </li>
+                </ul>
+                <div class="single-border"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4 singl-right-side">
+        <div class="row">
+          <div class="col-lg-6 col-xl-12">
+            <div class="agt-box">
+              <div class="agt-detail">
+                <div class="agt-img">
+                  <img
+                    [src]="
+                      ds.baseurl + '/users/images/' + propertyDetail.UserPhoto
+                    "
+                    alt=""
+                  />
+                </div>
+                <div class="ms-3">
+                  <p class="agt-name">Agent</p>
+                  <p class="agt-position">{{ propertyDetail.UserName }}</p>
+                  <p>
+                    <img
+                      src="assets/img/ace-small-logo.png"
+                      alt=""
+                      class="pe-1"
+                    /><img src="assets/img/verified-logo.png" alt="" />
+                  </p>
+                </div>
+              </div>
+              <div class="d-grid gap-2 agt-btn-box">
+                <button class="btn agt-btn" (click)="BookTour()">
+                  SCHEDULE A TOUR
+                </button>
+                <!-- <button class="btn agt-btn mt-2">REQUEST INFO</button> -->
+                <!-- <p class="mt-2 px-2">Lorem ipsum dolor sit amet,</p> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xl-12">
+            <div class="single-map">
+              <h3 class="d-block d-lg-none d-xl-block">Location Map</h3>
+              <div class="singl-map-border mt-3 mt-lg-0 mt-xl-3">
+                <iframe
+                  [src]="iframeUrl"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- About property section end -->
+
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  crossorigin="anonymous"
+></script>
+<script>
+  $(document).ready(function () {
+    var owl = $(".owl-carousel");
+    owl.owlCarousel({
+      margin: 10,
+      nav: true,
+      loop: true,
+      responsive: {
+        0: {
+          items: 1,
+        },
+        700: {
+          items: 2,
+        },
+        1000: {
+          items: 3,
+        },
+        1200: {
+          items: 4,
+        },
+      },
+    });
+  });
+</script>

@@ -1,0 +1,112 @@
+<!-- <div class="myContainer">
+  <div>
+    <div class="row" style="--bs-gutter-x: 0; padding: 1rem">
+      <div class="col-12 text-center">
+        <h4 class="pt-2 pb-3">SCHEDULE A TOUR</h4>
+      </div>
+      <div class="col-6">
+        <div class="mb-3 px-2">
+          <label for="exampleInputEmail1" class="form-label">
+            First Name
+          </label>
+          <input
+            type="text"
+            (input)="fname = $event.target"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-3 px-2">
+          <label for="exampleInputEmail1" class="form-label"> Last Name </label>
+          <input
+            (input)="lname = $event.target"
+            type="text"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-3 px-2">
+          <label for="exampleInputEmail1" class="form-label"> Email </label>
+          <input
+            (input)="email = $event.target"
+            type="text"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-3 px-2">
+          <label for="exampleInputEmail1" class="form-label"> Phone </label>
+          <input
+            (input)="phone = $event.target"
+            type="text"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-3 px-2">
+          <label for="exampleInputEmail1" class="form-label"> Date </label>
+          <input
+            (input)="a_date = $event.target"
+            type="date"
+            class="form-control"
+            [min]="newformated"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-3 px-2">
+          <label for="exampleInputEmail1" class="form-label"> Time </label>
+          <input
+            (input)="a_time = $event.target"
+            type="time"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col-6 px-2 pt-3">
+        <button
+          (click)="closeModel()"
+          class="btn btn-primary"
+          style="background-color: #000000"
+        >
+          Close
+        </button>
+        <button
+          (click)="handelSubmit()"
+          class="btn btn-primary mx-2"
+          style="background-color: #11574b"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<iframe
+  id="iframe_callback"
+  style="height: 70vh; width: 80vw"
+  [src]="frameUrl"
+></iframe>
+<button
+  (click)="closeModel()"
+  class="btn btn-primary"
+  style="background-color: #000000"
+  id="ok"
+  style="display: none"
+>
+  Close
+</button>
+<button
+  (click)="okDone()"
+  class="btn btn-primary"
+  style="background-color: #000000"
+  id="okDone"
+  style="display: none"
+>
+  Close
+</button>

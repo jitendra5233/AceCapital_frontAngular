@@ -1,0 +1,92 @@
+<section class="py-5 byp">
+  <div class="container">
+    <div class="row col-reverse-m">
+      <div class="col-lg-6 col-lg-6 col-12">
+        <div class="double-img">
+          <img width="100%" src="./assets/img/call-img3-16.png" />
+        </div>
+      </div>
+      <div class="col-lg-6 col-lg-6 col-12 text-center text-md-start">
+        <div>
+          <h5 class="book-property-title">A DIGITAL EXPERIENCE</h5>
+        </div>
+        <div>
+          <span class="book-property">
+            BOOK YOUR PROPERTY WITH ACE CAPITAL SUPPORT
+          </span>
+        </div>
+        <div>
+          <p class="book-property-content">
+            Ace Capital allows home owners and tenants to fully manage their
+            property from their phone.
+          </p>
+        </div>
+        <div class="mt-5">
+          <div style="display: flex; justify-content: space-between">
+            <div class="mb-3" style="width: 49%">
+              <input
+                [(ngModel)]="name"
+                type="text"
+                class="form-control AceRounded_input"
+                placeholder="First Name *"
+              />
+            </div>
+            <div class="mb-3" style="width: 49%">
+              <input
+                [(ngModel)]="lname"
+                type="text"
+                class="form-control AceRounded_input"
+                placeholder="Last Name *"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <input
+              [(ngModel)]="email"
+              type="text"
+              class="form-control AceRounded_input"
+              placeholder="Email *"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              [(ngModel)]="phone"
+              type="text"
+              class="form-control AceRounded_input"
+              placeholder="Phone No *"
+            />
+          </div>
+          <div class="mb-3">
+            <select
+              name=""
+              id=""
+              class="form-control AceRounded_input ng-pristine ng-valid ng-touched"
+              [(ngModel)]="purpose"
+            >
+              <option value="0">Select Purpose *</option>
+              <option value="1">Tentative</option>
+              <option value="2">Owner</option>
+              <option value="5">Other</option>
+            </select>
+          </div>
+          <div class="mt-4">
+            <button
+              class="btn Rounded_Bnt call-back-btn"
+              (click)="handleSubmit()"
+            >
+              REQUEST A CALL BACK
+            </button>
+          </div>
+          <div class="mt-2">
+            <p class="terms">
+              By clicking it, You are agree to our
+              <span class="termsAndPrivacy" routerLink="/terms-of-use"
+                >Terms & Privacy Policy.</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
